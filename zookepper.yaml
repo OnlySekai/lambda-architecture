@@ -1,0 +1,25 @@
+apiVersion: zookeeper.stackable.tech/v1alpha1
+kind: ZookeeperCluster
+metadata:
+  name: simple-zk
+spec:
+  image:
+    productVersion: 3.8.3
+  clusterConfig:
+    tls:
+      serverSecretClass: null
+  servers:
+    roleGroups:
+      primary:
+        replicas: 1
+        config:
+          myidOffset: 10
+---
+apiVersion: zookeeper.stackable.tech/v1alpha1
+kind: ZookeeperZnode
+metadata:
+  name: simple-zk-znode
+spec:
+  clusterRef:
+    name: simple-zk
+  
