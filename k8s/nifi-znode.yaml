@@ -1,0 +1,8 @@
+---
+apiVersion: zookeeper.stackable.tech/v1alpha1
+kind: ZookeeperZnode
+metadata:
+  name: simple-nifi-znode-2
+spec:
+  clusterRef:
+    name: simple-zk

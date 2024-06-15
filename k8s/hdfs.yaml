@@ -24,12 +24,3 @@ spec:
     roleGroups:
       default:
         replicas: 1
----
-apiVersion: zookeeper.stackable.tech/v1alpha1
-kind: ZookeeperZnode
-metadata:
-  name: simple-hdfs-znode
-spec:
-  clusterRef:
-    name: simple-zk
-    namespace: default

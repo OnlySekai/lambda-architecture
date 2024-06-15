@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: write-to-kafka-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: write-to-kafka
+  template:
+    metadata:
+      labels:
+        app: write-to-kafka
+    spec:
+      containers:
+      - name: write-to-kafka-deployment
+        image: onlysekai/write-to-kafka:latest
+        ports:
+        - containerPort: 3000
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: write-to-kafka-service
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+    targetPort: 3000
+  selector:
+    app: write-to-kafka
